@@ -9,74 +9,33 @@
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/bt.h>
 
-#define QWERTY 0
-#define GAMING 1
-#define NUMPAD 2
-#define NUMROW 3
-#define ADJUST 4
-#define CONFIG 5
-
 / {
         keymap {
                 compatible = "zmk,keymap";
 
-                default_layer {
-                        label = "QWERTY";
+                layer0 {
                         bindings = <
-   &kp TAB   &kp Q &kp W &kp E &kp R &kp T    &kp Y &kp U &kp I    &kp O   &kp P    &kp BKSP
-   &kp LALT  &kp A &kp S &kp D &kp F &kp G    &kp H &kp J &kp K    &kp L   &kp QUOT &kp ENTER
-   &kp LSHFT &kp Z &kp X &kp C &kp V &kp B    &kp N &kp M &kp CMMA &kp DOT &kp FSLH &kp RSFT
-              &kp LGUI &kp LCTL &mo NUMROW    &kp SPC &mo ADJUST &kp F13
+  &kp TAB &kp Q &kp W &kp E &kp R &kp T &kp Y &kp U &kp I &kp O &kp P &kp BACKSPACE &kp LEFT_GUI &kp A &kp S &kp D &kp F &kp G &kp H &kp J &kp K &kp L [[KC_EXLM]] &kp MINUS &kp LEFT_SHIFT &kp Z &kp X &kp C &kp V &kp B &kp N &kp M &kp COMMA &kp DOT [[KC_QUES]] &kp ESCAPE &mo 2 &mo 1 &kp SPACE [[RSFT_T(KC_ENT)]] &mt LEFT_CONTROL LANGUAGE_1 [[RALT_T(KC_LNG2)]]
                         >;
                 };
-
-                gaming_layer {
-                        label = "GAMING";
+                layer1 {
                         bindings = <
-   &kp TAB   &kp Q &kp W &kp E &kp R &kp T    &kp Y &kp U &kp I    &kp O   &kp P    &kp BKSP
-   &kp LALT  &kp A &kp S &kp D &kp F &kp G    &kp H &kp J &kp K    &kp L   &kp QUOT &kp ENTER
-   &kp LSHFT &kp Z &kp X &kp C &kp V &kp B    &kp N &kp M &kp CMMA &kp DOT &kp FSLH &kp RSFT
-               &kp LCTL &mo NUMROW &kp SPC    &kp SPC &mo ADJUST &kp F13
+  [[RGUI(KC_TAB)]] &kp N1 &kp N2 &kp N3 &kp N4 &kp N5 &kp N6 &kp N7 &kp N8 &kp N9 &kp N0 &kp BACKSPACE &kp LEFT_GUI &kp ESCAPE &none &kp BACKSPACE &kp TAB &none &kp LEFT &kp DOWN &kp UP &kp RIGHT &kp ENTER &kp RIGHT_CONTROL &kp LEFT_SHIFT &none &none &none &none &none &kp HOME &kp PAGE_DOWN &kp PAGE_UP &kp END &none &kp ESCAPE &mo 3 &trans &kp SPACE [[RSFT_T(KC_ENT)]] &mt LEFT_CONTROL LANGUAGE_1 [[RALT_T(KC_LNG2)]]
                         >;
                 };
-
-                numpad_layer {
-                        label = "NUMPAD";
-                        bindings = < 
-   &kp TAB     &none &none &none &none &none    &kp KP_EQUAL    &kp KP_N7 &kp KP_N8 &kp KP_N9 &kp KP_MINUS &kp BSPC
-   &kp KP_NLCK &none &none &none &none &none    &kp KP_ASTERISK &kp KP_N4 &kp KP_N5 &kp KP_N6 &kp KP_PLUS  &none
-   &tog NUMPAD &none &none &none &none &none    &kp KP_SLASH    &kp KP_N1 &kp KP_N2 &kp KP_N3 &kp KP_ENTER &none
-              &mo CONFIG &kp LCTL &mo NUMROW    &kp SPC &kp KP_N0 &kp KP_DOT
+                layer2 {
+                        bindings = <
+  &kp TAB [[KC_EXLM]] [[KC_AT]] [[KC_HASH]] [[KC_DLR]] [[KC_PERC]] [[KC_CIRC]] [[KC_AMPR]] [[KC_ASTR]] [[KC_LPRN]] [[KC_RPRN]] &kp BACKSPACE &kp LEFT_GUI [[KC_TILD]] [[KC_PIPE]] &kp SEMICOLON [[KC_COLN]] [[KC_PLUS]] &kp GRAVE [[KC_DQUO]] &kp SINGLE_QUOTE &kp LEFT_BRACKET &kp RIGHT_BRACKET &kp RIGHT_ALT &mo 4 &kp INTERNATIONAL_3 &kp NON_US_HASH [[KC_UNDS]] &kp MINUS &kp KP_EQUAL &kp KP_SLASH [[KC_LT]] [[KC_GT]] [[KC_LCBR]] [[KC_RCBR]] &kp ESCAPE &trans &mo 3 &kp SPACE [[RSFT_T(KC_ENT)]] &mt LEFT_CONTROL LANGUAGE_1 [[RALT_T(KC_LNG2)]]
                         >;
                 };
-
-                numrow_layer {
-                        label = "NUMROW";
+                layer3 {
                         bindings = <
-   &kp ESC   &kp N1 &kp N2 &kp N3    &kp N4    &kp N5       &kp N6   &kp N7   &kp N8 &kp N9    &kp N0   &kp DEL
-   &kp GRAVE &none  &none  &kp PSCRN &kp MINUS &kp EQUAL    &kp LEFT &kp DOWN &kp UP &kp RIGHT &kp SEMI &none
-   &none     &none  &none  &kp BSLH  &kp LBKT  &kp RBKT     &none    &none    &none  &none     &none    &none 
-                          &mo CONFIG &kp LCTL &mo NUMROW    &kp SPC &mo ADJUST &kp F13
+  &kp TAB &kp F1 &kp F2 &kp F3 &kp F4 &kp F5 &kp F6 &kp F7 &kp F8 &kp F9 &kp F10 &kp F11 &kp LEFT_GUI &none &none &none &none &none [[KC_MS_L]] [[KC_MS_D]] [[KC_MS_U]] [[KC_MS_R]] &none &kp F12 &kp LEFT_SHIFT &kp C_BRIGHTNESS_DEC &kp C_BRIGHTNESS_INC &kp C_VOLUME_DOWN &kp C_VOLUME_UP &kp C_MUTE [[KC_WH_L]] [[KC_WH_D]] [[KC_WH_U]] [[KC_WH_R]] &none &kp ESCAPE &trans &trans &kp SPACE [[KC_BTN1]] [[KC_BTN2]] [[RALT_T(KC_LNG2)]]
                         >;
                 };
-
-                adjust_layer {
-                        label = "ADJUST";
+                layer4 {
                         bindings = <
-   &kp F1      &kp F2  &kp F3   &kp F4    &kp F5 &kp F6    &kp F7   &kp F8   &kp F9 &kp F10   &kp F11 &kp F12
-   &kp CAPS    &kp INS &kp HOME &kp PG_UP &none  &none     &kp LEFT &kp DOWN &kp UP &kp RIGHT &none   &none
-   &tog NUMPAD &kp DEL &kp END  &kp PG_DN &none  &none     &none    &none    &none  &none     &none   &none
-                           &kp LGUI &kp LCTL &mo NUMROW    &kp SPC &mo ADJUST &tog GAMING
-                        >;
-                };
-
-                config_layer {
-                        label = "CONFIG";
-                        bindings = <
-   &reset     &none        &none        &none        &none        &none           &none &none &none &none &none &none 
-   &bt BT_CLR &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4    &none &none &none &none &none &none
-   &none      &none        &none        &none        &none        &none           &none &none &none &none &none &none
-                                                &mo CONFIG &kp LCTL &mo NUMROW    &kp SPC &mo ADJUST &kp F13
+  &kp TAB &none &none &none &none &none &none &kp KP_N7 &kp KP_N8 &kp KP_N9 &none &kp BACKSPACE &kp LEFT_GUI &none &none &none &kp KP_ASTERISK &kp KP_PLUS &none &kp KP_N4 &kp KP_N5 &kp KP_N6 &kp KP_COMMA &kp RIGHT_CONTROL &trans &none &none &none &kp KP_MINUS &kp KP_EQUAL &kp KP_N0 &kp KP_N1 &kp KP_N2 &kp KP_N3 &none &kp ESCAPE &trans &trans &kp SPACE [[RSFT_T(KC_ENT)]] &trans &trans
                         >;
                 };
         };
