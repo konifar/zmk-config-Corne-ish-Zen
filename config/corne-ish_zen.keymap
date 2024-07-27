@@ -10,8 +10,8 @@
 #include <dt-bindings/zmk/bt.h>
 
 #define QWERTY 0
-#define NUMROW 1
-#define NUMPAD 2
+#define NUMANDMOVE 1
+#define SYMBOL 2
 #define ADJUST 3
 #define CONFIG 4
 
@@ -22,15 +22,15 @@
                 default_layer {
                         label = "QWERTY";
                         bindings = <
-   &kp TAB    &kp Q  &kp W  &kp E       &kp R       &kp T      &kp Y            &kp U            &kp I           &kp O    &kp P         &kp BKSP
-   &kp LGUI   &kp A  &kp S  &kp D       &kp F       &kp G      &kp H            &kp J            &kp K           &kp L    &kp EXCL      &kp MINUS 
-   &kp LSHFT  &kp Z  &kp X  &kp C       &kp V       &kp B      &kp N            &kp M            &kp CMMA        &kp DOT  &kp QUESTION  &kp ESC 
-                            &mo NUMPAD  &mo NUMROW  &kp SPC    &mt LSHFT ENTER  &mt LCTRL LANG1  &mt RALT LANG2
+   &kp TAB    &kp Q  &kp W  &kp E       &kp R           &kp T      &kp Y            &kp U            &kp I           &kp O    &kp P         &kp BKSP
+   &kp LGUI   &kp A  &kp S  &kp D       &kp F           &kp G      &kp H            &kp J            &kp K           &kp L    &kp EXCL      &kp MINUS 
+   &kp LSHFT  &kp Z  &kp X  &kp C       &kp V           &kp B      &kp N            &kp M            &kp CMMA        &kp DOT  &kp QUESTION  &kp ESC 
+                            &mo SYMBOL  &mo NUMANDMOVE  &kp SPC    &mt LSHFT ENTER  &mt LCTRL LANG1  &mt RALT LANG2
                         >;
                 };
 
-                numrow_layer {
-                        label = "NUMROW";
+                numandmove_layer {
+                        label = "NUMANDMOVE";
                         bindings = <
    &kp TAB    &kp N1   &kp N2  &kp N3      &kp N4   &kp N5       &kp N6           &kp N7           &kp N8          &kp N9     &kp N0     &kp BSPC
    &kp LGUI   &kp ESC  &none   &kp BSPC    &kp TAB  &none        &kp LEFT         &kp DOWN         &kp UP          &kp RIGHT  &kp ENTER  &kp RCTRL
@@ -39,8 +39,8 @@
                         >;
                 };
 
-                numpad_layer {
-                        label = "NUMPAD";
+                symbol_layer {
+                        label = "SYMBOL";
                         bindings = < 
    &kp TAB    &kp LS(EXCL)   &kp LS(AT)    &kp LS(POUND)  &kp LS(DLLR)   &kp LS(PRCNT)    &kp LS(CARET)    &kp LS(AMPS)     &kp LS(STAR)  &kp LS(LPAR)  &kp LS(RPAR)  &kp BSPC
    &kp LGUI   &kp LS(TILDE)  &kp LS(PIPE)  &kp SEMI       &kp LS(COLON)  &kp LS(PLUS)     &kp GRAVE        &kp LS(DQT)      &kp SQT       &kp LBKT      &kp RBKT      &kp RALT
@@ -54,8 +54,8 @@
                         bindings = <
    &kp F1      &kp F2  &kp F3   &kp F4    &kp F5 &kp F6    &kp F7   &kp F8   &kp F9 &kp F10   &kp F11 &kp F12
    &kp CAPS    &kp INS &kp HOME &kp PG_UP &none  &none     &kp LEFT &kp DOWN &kp UP &kp RIGHT &none   &none
-   &tog NUMPAD &kp DEL &kp END  &kp PG_DN &none  &none     &none    &none    &none  &none     &none   &none
-                           &kp LGUI &kp LCTL &mo NUMROW    &kp SPC &mo ADJUST &none
+   &tog SYMBOL &kp DEL &kp END  &kp PG_DN &none  &none     &none    &none    &none  &none     &none   &none
+                           &kp LGUI &kp LCTL &mo NUMANDMOVE    &kp SPC &mo ADJUST &none
                         >;
                 };
 
@@ -65,7 +65,7 @@
    &reset     &none        &none        &none        &none        &none           &none &none &none &none &none &none 
    &bt BT_CLR &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4    &none &none &none &none &none &none
    &none      &none        &none        &none        &none        &none           &none &none &none &none &none &none
-                                                &mo CONFIG &kp LCTL &mo NUMROW    &kp SPC &mo ADJUST &kp F13
+                                                &mo CONFIG &kp LCTL &mo NUMANDMOVE    &kp SPC &mo ADJUST &kp F13
                         >;
                 };
         };
