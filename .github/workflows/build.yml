@@ -27,25 +27,6 @@ jobs:
             ${{ runner.os }}-build-${{ env.cache-name }}-
             ${{ runner.os }}-build-
             ${{ runner.os }}-
-      - name: West Init
-        run: west init -l config
-      - name: West Update
-        run: west update
-      - name: Install wget
-        run: |
-          apt-get update
-          apt-get install -y wget
-        shell: bash
-      - name: Install CMake from Kitware APT repository
-        run: |
-          apt-get update
-          apt-get install -y software-properties-common
-          wget -O - https://apt.kitware.com/keys/kitware-archive-latest.asc | apt-key add -
-          apt-add-repository 'deb https://apt.kitware.com/ubuntu/ focal main'
-          apt-get update
-          apt-get install -y cmake
-        shell: bash
-      
       - name: Install pip3
         run: apt-get install -y python3-pip
         shell: bash
@@ -54,11 +35,26 @@ jobs:
         run: pip3 install --upgrade west
         shell: bash
 
-      - name: Install Zephyr SDK
+      - name: West Init
+        run: west init -l config
+
+      - name: West Update
+        run: west update
+
+      - name: Install wget
         run: |
-          wget https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v0.16.0/zephyr-sdk-0.16.0-setup.run
-          chmod +x zephyr-sdk-0.16.0-setup.run
-          ./zephyr-sdk-0.16.0-setup.run -- -d $HOME/zephyr-sdk
+          apt-get update
+          apt-get install -y wget
+        shell: bash
+
+      - name: Install CMake from Kitware APT repository
+        run: |
+          apt-get update
+          apt-get install -y software-properties-common
+          wget -O - https://apt.kitware.com/keys/kitware-archive-latest.asc | apt-key add -
+          apt-add-repository 'deb https://apt.kitware.com/ubuntu/ focal main'
+          apt-get update
+          apt-get install -y cmake
         shell: bash
 
       - name: Set Zephyr SDK environment variables
