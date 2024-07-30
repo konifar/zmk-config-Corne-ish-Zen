@@ -58,16 +58,12 @@ jobs:
           apt-get install -y cmake
         shell: bash
 
-      - name: Set Zephyr SDK environment variables
-        run: |
-          echo "ZEPHYR_TOOLCHAIN_VARIANT=zephyr" >> $GITHUB_ENV
-          echo "ZEPHYR_SDK_INSTALL_DIR=$HOME/zephyr-sdk" >> $GITHUB_ENV
-        shell: bash
-
       - name: West Zephyr export
         run: west zephyr-export
+
       - name: West Build (Corne-ish Zen Left)
         run: west build -s zmk/app -b corneish_zen_v1_left -- -DZMK_CONFIG="${GITHUB_WORKSPACE}/config"
+
       - name: Corne-ish Zen DTS File
         if: ${{ always() }}
         run: cat -n build/zephyr/corneish_zen_v1_left.dts.pre.tmp
