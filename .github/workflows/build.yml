@@ -31,16 +31,16 @@ jobs:
         run: west init -l config
       - name: West Update
         run: west update
-      - name: Install CMake
+      - name: Install Dependencies and CMake
         run: |
-          sudo apt-get update
-          sudo apt-get install -y software-properties-common lsb-release
-          sudo apt-get purge --auto-remove cmake
-          sudo apt-get install -y wget
+          apt-get update
+          apt-get install -y software-properties-common lsb-release
+          apt-get purge --auto-remove cmake
+          apt-get install -y wget
           wget https://github.com/Kitware/CMake/releases/download/v3.20.0/cmake-3.20.0-linux-x86_64.sh
-          sudo mkdir /opt/cmake
-          sudo sh cmake-3.20.0-linux-x86_64.sh --prefix=/opt/cmake --skip-license
-          sudo ln -s /opt/cmake/bin/cmake /usr/local/bin/cmake
+          mkdir /opt/cmake
+          sh cmake-3.20.0-linux-x86_64.sh --prefix=/opt/cmake --skip-license
+          ln -s /opt/cmake/bin/cmake /usr/local/bin/cmake
         shell: bash
       - name: West Zephyr export
         run: west zephyr-export
