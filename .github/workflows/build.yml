@@ -27,6 +27,13 @@ jobs:
             ${{ runner.os }}-build-${{ env.cache-name }}-
             ${{ runner.os }}-build-
             ${{ runner.os }}-
+
+      - name: Install wget
+        run: |
+          apt-get update
+          apt-get install -y wget
+        shell: bash
+
       - name: Install pip3
         run: apt-get install -y python3-pip
         shell: bash
@@ -40,12 +47,6 @@ jobs:
 
       - name: West Update
         run: west update
-
-      - name: Install wget
-        run: |
-          apt-get update
-          apt-get install -y wget
-        shell: bash
 
       - name: Install CMake from Kitware APT repository
         run: |
