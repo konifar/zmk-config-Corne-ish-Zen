@@ -31,16 +31,14 @@ jobs:
         run: west init -l config
       - name: West Update
         run: west update
-      - name: Install Dependencies and CMake
+      - name: Install CMake from Kitware APT repository
         run: |
           apt-get update
-          apt-get install -y software-properties-common lsb-release
-          apt-get purge --auto-remove cmake
-          apt-get install -y wget
-          wget https://github.com/Kitware/CMake/releases/download/v3.20.0/cmake-3.20.0-linux-x86_64.sh
-          mkdir /opt/cmake
-          sh cmake-3.20.0-linux-x86_64.sh --prefix=/opt/cmake --skip-license
-          ln -s /opt/cmake/bin/cmake /usr/local/bin/cmake
+          apt-get install -y software-properties-common
+          wget -O - https://apt.kitware.com/keys/kitware-archive-latest.asc | apt-key add -
+          apt-add-repository 'deb https://apt.kitware.com/ubuntu/ focal main'
+          apt-get update
+          apt-get install -y cmake
         shell: bash
       - name: West Zephyr export
         run: west zephyr-export
