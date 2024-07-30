@@ -45,6 +45,15 @@ jobs:
           apt-get update
           apt-get install -y cmake
         shell: bash
+      
+      - name: Install pip3
+        run: apt-get install -y python3-pip
+        shell: bash
+
+      - name: Upgrade west to latest version
+        run: pip3 install --upgrade west
+        shell: bash
+
       - name: West Zephyr export
         run: west zephyr-export
       - name: West Build (Corne-ish Zen Left)
