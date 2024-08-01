@@ -19,6 +19,16 @@
 #define SYMBOL 2
 #define FNMOUSE 3
 
+&mmv {
+   time-to-max-speed-ms = <600>;
+   acceleration-exponent=<2>;
+};
+
+&msc {
+   time-to-max-speed-ms = <600>;
+   acceleration-exponent=<1>;
+};
+
 / {
         keymap {
                 compatible = "zmk,keymap";
